@@ -2,11 +2,7 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Betriebliche Krankenversicherung</title>
 
@@ -18,118 +14,123 @@
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      background: #f5f7fa;
-      color: #111;
+      background: #ffffff;
+      color: #222;
     }
 
     /* =========================
-       HEADER
+       OBERER BEREICH
     ========================= */
 
-    header {
+    .top-area {
+      width: 100%;
       background: white;
-      border-bottom: 1px solid #ddd;
-      padding: 22px 20px;
       text-align: center;
+      padding: 28px 16px 18px;
+      border-bottom: 1px solid #e3e3e3;
     }
 
-    header h1 {
-      margin: 0 0 8px;
-      font-size: 28px;
-      color: #003781;
+    .money-icon {
+      font-size: 58px;
+      margin-bottom: 8px;
     }
 
-    header p {
+    .top-area h1 {
       margin: 0;
-      color: #666;
-      font-size: 16px;
+      font-size: 28px;
+      font-weight: 700;
+      color: #143b68;
     }
 
+    .top-area p {
+      margin: 8px 0 0;
+      font-size: 16px;
+      color: #666;
+    }
 
     /* =========================
-       SPRACHAUSWAHL
+       SPRACHWAHL
     ========================= */
 
-    .language-container {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 10px;
+    .language-section {
+      background: #f5f7fa;
+      padding: 18px 12px;
+      border-bottom: 1px solid #ddd;
+    }
 
-      padding: 20px 15px;
-      background: white;
+    .language-buttons {
+      width: min(900px, 100%);
+      margin: 0 auto;
+
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
     }
 
     .language-button {
-      border: 2px solid #006192;
+      appearance: none;
+      border: 2px solid #155ea8;
       background: white;
-      color: #006192;
+      color: #155ea8;
 
       padding: 10px 18px;
-      border-radius: 25px;
+      border-radius: 999px;
 
       font-size: 15px;
-      font-weight: bold;
+      font-weight: 700;
 
       cursor: pointer;
 
       transition:
-        background 0.2s,
-        color 0.2s,
-        transform 0.2s;
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.15s ease;
     }
 
     .language-button:hover {
-      background: #eaf5fb;
       transform: translateY(-1px);
+      background: #eef5fb;
     }
 
     .language-button.active {
-      background: #006192;
+      background: #155ea8;
       color: white;
     }
-
 
     /* =========================
        BILD
     ========================= */
 
-    main {
-      padding: 25px 15px 50px;
+    .content {
+      width: 100%;
+      padding: 20px 10px 40px;
     }
 
-    .image-wrapper {
-      width: min(1050px, 100%);
+    .image-container {
+      width: min(1020px, 100%);
       margin: 0 auto;
-
-      background: white;
-
-      border-radius: 12px;
-      overflow: hidden;
-
-      box-shadow:
-        0 4px 20px rgba(0, 0, 0, 0.08);
+      text-align: center;
     }
 
     #infoImage {
       display: block;
       width: 100%;
       height: auto;
+      margin: 0 auto;
     }
-
 
     /* =========================
-       LADEANZEIGE
+       STATUS
     ========================= */
 
-    #loading {
+    #status {
       display: none;
+      padding: 35px 10px;
       text-align: center;
-      padding: 40px;
-      font-size: 18px;
       color: #666;
+      font-size: 16px;
     }
-
 
     /* =========================
        MOBILE
@@ -137,78 +138,96 @@
 
     @media (max-width: 600px) {
 
-      header h1 {
+      .top-area {
+        padding: 22px 12px 14px;
+      }
+
+      .money-icon {
+        font-size: 48px;
+      }
+
+      .top-area h1 {
         font-size: 23px;
       }
 
-      .language-container {
+      .top-area p {
+        font-size: 15px;
+      }
+
+      .language-section {
+        padding: 14px 8px;
+      }
+
+      .language-buttons {
         gap: 7px;
-        padding: 15px 10px;
       }
 
       .language-button {
-        padding: 9px 13px;
+        padding: 8px 13px;
         font-size: 14px;
       }
 
-      main {
-        padding: 15px 8px 30px;
+      .content {
+        padding: 10px 4px 25px;
       }
 
-      .image-wrapper {
-        border-radius: 8px;
-      }
     }
   </style>
 </head>
 
-
 <body>
 
   <!-- =========================
-       KOPF
+       KOPFBEREICH
   ========================== -->
 
-  <header>
+  <section class="top-area">
+
+    <div class="money-icon">
+      💸
+    </div>
 
     <h1>
       Betriebliche Krankenversicherung
     </h1>
 
     <p>
-      Bitte wähle deine Sprache
+      Sprache auswählen / Select language
     </p>
 
-  </header>
+  </section>
 
 
   <!-- =========================
        SPRACHBUTTONS
   ========================== -->
 
-  <div
-    class="language-container"
-    id="languageButtons"
-  >
-  </div>
+  <section class="language-section">
+
+    <div
+      class="language-buttons"
+      id="languageButtons"
+    ></div>
+
+  </section>
 
 
   <!-- =========================
-       BILDANZEIGE
+       BILD
   ========================== -->
 
-  <main>
+  <main class="content">
 
-    <div class="image-wrapper">
+    <div class="image-container">
 
-      <div id="loading">
+      <div id="status">
         Wird geladen...
       </div>
 
       <img
         id="infoImage"
-        src="deutsch.png"
-        alt="Informationen zur betrieblichen Krankenversicherung"
+        src="Deutsch.png"
+        alt="Betriebliche Krankenversicherung"
       >
 
     </div>
@@ -219,60 +238,56 @@
   <script>
 
     /*
-      =====================================
-      HIER DIE SPRACHEN UND BILDER EINTRAGEN
-      =====================================
-
-      name     = Beschriftung des Buttons
-      file     = Dateiname auf GitHub
-
-      Beispiel:
-
-      {
-        name: "Deutsch",
-        file: "deutsch.png"
-      }
-
+      =============================
+      SPRACHEN + DATEINAMEN
+      =============================
     */
 
     const languages = [
 
       {
         name: "Deutsch",
-        file: "deutsch.png"
+        file: "Deutsch.png"
       },
 
       {
         name: "English",
-        file: "english.png"
+        file: "Englisch.png"
       },
 
       {
-        name: "Polski",
-        file: "polski.png"
+        name: "Italiano",
+        file: "Italienisch.png"
+      },
+
+      {
+        name: "Hrvatski",
+        file: "Kroatisch.png"
       },
 
       {
         name: "Română",
-        file: "romana.png"
+        file: "Rumänisch.png"
+      },
+
+      {
+        name: "Русский",
+        file: "Russisch.png"
       },
 
       {
         name: "Türkçe",
-        file: "turkce.png"
-      },
-
-      {
-        name: "Українська",
-        file: "ukrainisch.png"
+        file: "Türkisch.png"
       }
 
     ];
 
 
-    /* =========================
-       ELEMENTE
-    ========================== */
+    /*
+      =============================
+      ELEMENTE
+      =============================
+    */
 
     const buttonContainer =
       document.getElementById("languageButtons");
@@ -280,18 +295,22 @@
     const image =
       document.getElementById("infoImage");
 
-    const loading =
-      document.getElementById("loading");
+    const status =
+      document.getElementById("status");
 
 
-    /* =========================
-       SPRACHBUTTONS ERSTELLEN
-    ========================== */
+    /*
+      =============================
+      BUTTONS ERSTELLEN
+      =============================
+    */
 
     languages.forEach((language, index) => {
 
       const button =
         document.createElement("button");
+
+      button.type = "button";
 
       button.className =
         "language-button";
@@ -300,37 +319,26 @@
         language.name;
 
 
-      /* Deutsch standardmäßig aktiv */
+      /*
+        Deutsch am Anfang aktiv
+      */
 
       if (index === 0) {
-
         button.classList.add("active");
-
       }
 
 
-      /* =========================
-         KLICK AUF SPRACHE
-      ========================== */
+      /*
+        Klick auf Sprache
+      */
 
       button.addEventListener("click", () => {
-
-        /*
-          Alle Buttons deaktivieren
-        */
 
         document
           .querySelectorAll(".language-button")
           .forEach(btn => {
-
             btn.classList.remove("active");
-
           });
-
-
-        /*
-          Angeclickten Button aktivieren
-        */
 
         button.classList.add("active");
 
@@ -341,17 +349,21 @@
 
         image.style.display = "none";
 
-        loading.style.display = "block";
+        status.style.display = "block";
+
+        status.textContent =
+          "Wird geladen...";
 
 
         /*
-          Neues Bild setzen
+          Neues Bild laden
         */
 
-        image.src = language.file;
+        image.src =
+          language.file;
 
         image.alt =
-          "Betriebliche Krankenversicherung – " +
+          "Betriebliche Krankenversicherung - " +
           language.name;
 
       });
@@ -362,28 +374,34 @@
     });
 
 
-    /* =========================
-       BILD GELADEN
-    ========================== */
+    /*
+      =============================
+      BILD ERFOLGREICH GELADEN
+      =============================
+    */
 
     image.addEventListener("load", () => {
 
-      loading.style.display = "none";
+      status.style.display = "none";
 
       image.style.display = "block";
 
     });
 
 
-    /* =========================
-       FEHLER
-    ========================== */
+    /*
+      =============================
+      BILD NICHT GEFUNDEN
+      =============================
+    */
 
     image.addEventListener("error", () => {
 
-      loading.style.display = "block";
+      image.style.display = "none";
 
-      loading.textContent =
+      status.style.display = "block";
+
+      status.textContent =
         "Das Bild konnte nicht geladen werden.";
 
     });
