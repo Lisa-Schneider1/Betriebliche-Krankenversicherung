@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Betriebliche Krankenversicherung</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f5f7fa;
+      color: #111;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    header {
+      background: white;
+      border-bottom: 1px solid #ddd;
+      padding: 22px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0 0 8px;
+      font-size: 28px;
+      color: #003781;
+    }
+
+    header p {
+      margin: 0;
+      color: #666;
+      font-size: 16px;
+    }
+
+
+    /* =========================
+       SPRACHAUSWAHL
+    ========================= */
+
+    .language-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+
+      padding: 20px 15px;
+      background: white;
+    }
+
+    .language-button {
+      border: 2px solid #006192;
+      background: white;
+      color: #006192;
+
+      padding: 10px 18px;
+      border-radius: 25px;
+
+      font-size: 15px;
+      font-weight: bold;
+
+      cursor: pointer;
+
+      transition:
+        background 0.2s,
+        color 0.2s,
+        transform 0.2s;
+    }
+
+    .language-button:hover {
+      background: #eaf5fb;
+      transform: translateY(-1px);
+    }
+
+    .language-button.active {
+      background: #006192;
+      color: white;
+    }
+
+
+    /* =========================
+       BILD
+    ========================= */
+
+    main {
+      padding: 25px 15px 50px;
+    }
+
+    .image-wrapper {
+      width: min(1050px, 100%);
+      margin: 0 auto;
+
+      background: white;
+
+      border-radius: 12px;
+      overflow: hidden;
+
+      box-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    #infoImage {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+
+    /* =========================
+       LADEANZEIGE
+    ========================= */
+
+    #loading {
+      display: none;
+      text-align: center;
+      padding: 40px;
+      font-size: 18px;
+      color: #666;
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 600px) {
+
+      header h1 {
+        font-size: 23px;
+      }
+
+      .language-container {
+        gap: 7px;
+        padding: 15px 10px;
+      }
+
+      .language-button {
+        padding: 9px 13px;
+        font-size: 14px;
+      }
+
+      main {
+        padding: 15px 8px 30px;
+      }
+
+      .image-wrapper {
+        border-radius: 8px;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+
+  <!-- =========================
+       KOPF
+  ========================== -->
+
+  <header>
+
+    <h1>
+      Betriebliche Krankenversicherung
+    </h1>
+
+    <p>
+      Bitte wähle deine Sprache
+    </p>
+
+  </header>
+
+
+  <!-- =========================
+       SPRACHBUTTONS
+  ========================== -->
+
+  <div
+    class="language-container"
+    id="languageButtons"
+  >
+  </div>
+
+
+  <!-- =========================
+       BILDANZEIGE
+  ========================== -->
+
+  <main>
+
+    <div class="image-wrapper">
+
+      <div id="loading">
+        Wird geladen...
+      </div>
+
+      <img
+        id="infoImage"
+        src="deutsch.png"
+        alt="Informationen zur betrieblichen Krankenversicherung"
+      >
+
+    </div>
+
+  </main>
+
+
+  <script>
+
+    /*
+      =====================================
+      HIER DIE SPRACHEN UND BILDER EINTRAGEN
+      =====================================
+
+      name     = Beschriftung des Buttons
+      file     = Dateiname auf GitHub
+
+      Beispiel:
+
+      {
+        name: "Deutsch",
+        file: "deutsch.png"
+      }
+
+    */
+
+    const languages = [
+
+      {
+        name: "Deutsch",
+        file: "deutsch.png"
+      },
+
+      {
+        name: "English",
+        file: "english.png"
+      },
+
+      {
+        name: "Polski",
+        file: "polski.png"
+      },
+
+      {
+        name: "Română",
+        file: "romana.png"
+      },
+
+      {
+        name: "Türkçe",
+        file: "turkce.png"
+      },
+
+      {
+        name: "Українська",
+        file: "ukrainisch.png"
+      }
+
+    ];
+
+
+    /* =========================
+       ELEMENTE
+    ========================== */
+
+    const buttonContainer =
+      document.getElementById("languageButtons");
+
+    const image =
+      document.getElementById("infoImage");
+
+    const loading =
+      document.getElementById("loading");
+
+
+    /* =========================
+       SPRACHBUTTONS ERSTELLEN
+    ========================== */
+
+    languages.forEach((language, index) => {
+
+      const button =
+        document.createElement("button");
+
+      button.className =
+        "language-button";
+
+      button.textContent =
+        language.name;
+
+
+      /* Deutsch standardmäßig aktiv */
+
+      if (index === 0) {
+
+        button.classList.add("active");
+
+      }
+
+
+      /* =========================
+         KLICK AUF SPRACHE
+      ========================== */
+
+      button.addEventListener("click", () => {
+
+        /*
+          Alle Buttons deaktivieren
+        */
+
+        document
+          .querySelectorAll(".language-button")
+          .forEach(btn => {
+
+            btn.classList.remove("active");
+
+          });
+
+
+        /*
+          Angeclickten Button aktivieren
+        */
+
+        button.classList.add("active");
+
+
+        /*
+          Ladeanzeige
+        */
+
+        image.style.display = "none";
+
+        loading.style.display = "block";
+
+
+        /*
+          Neues Bild setzen
+        */
+
+        image.src = language.file;
+
+        image.alt =
+          "Betriebliche Krankenversicherung – " +
+          language.name;
+
+      });
+
+
+      buttonContainer.appendChild(button);
+
+    });
+
+
+    /* =========================
+       BILD GELADEN
+    ========================== */
+
+    image.addEventListener("load", () => {
+
+      loading.style.display = "none";
+
+      image.style.display = "block";
+
+    });
+
+
+    /* =========================
+       FEHLER
+    ========================== */
+
+    image.addEventListener("error", () => {
+
+      loading.style.display = "block";
+
+      loading.textContent =
+        "Das Bild konnte nicht geladen werden.";
+
+    });
+
+  </script>
+
+</body>
+</html>
