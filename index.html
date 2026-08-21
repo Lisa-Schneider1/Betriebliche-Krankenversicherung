@@ -134,10 +134,10 @@
     }
 
     .flag {
-      font-size: 30px;
       width: 48px;
+      height: 40px;
       flex-shrink: 0;
-      text-align: center;
+      object-fit: contain;
       margin-right: 10px;
     }
 
@@ -179,6 +179,53 @@
 
     .info strong {
       color: var(--plum);
+    }
+
+    .downloads {
+      margin-top: 14px;
+      padding: 15px 18px;
+      border-radius: 18px;
+
+      background: #fbfbfb;
+      border: 1px solid var(--border);
+
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .downloads strong {
+      display: block;
+      margin-bottom: 9px;
+      color: var(--plum);
+    }
+
+    .dl-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .dl-list a {
+      padding: 9px 14px;
+      border-radius: 999px;
+
+      background: white;
+      border: 1px solid var(--border);
+
+      color: var(--plum);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 13px;
+
+      transition: border-color 0.15s ease, color 0.15s ease;
+    }
+
+    .dl-list a:hover,
+    .dl-list a:focus {
+      border-color: var(--red);
+      color: var(--red);
+      outline: none;
     }
 
     .footer {
@@ -240,44 +287,44 @@
 
       <div class="language-list">
 
-        <a class="language" href="Deutsch.png">
-          <span class="flag">🇩🇪</span>
+        <a class="language" href="bkv-de.webp">
+          <img class="flag" src="flag-de.webp" alt="" width="48" height="40">
           <span class="language-name">Deutsch</span>
           <span class="arrow">›</span>
         </a>
 
-        <a class="language" href="Englisch.png">
-          <span class="flag">🇬🇧</span>
+        <a class="language" href="bkv-en.webp">
+          <img class="flag" src="flag-en.webp" alt="" width="48" height="40">
           <span class="language-name">English</span>
           <span class="arrow">›</span>
         </a>
 
-        <a class="language" href="Türkisch.png">
-          <span class="flag">🇹🇷</span>
+        <a class="language" href="bkv-tr.webp">
+          <img class="flag" src="flag-tr.webp" alt="" width="48" height="40">
           <span class="language-name">Türkçe</span>
           <span class="arrow">›</span>
         </a>
 
-        <a class="language" href="Kroatisch.png">
-          <span class="flag">🇭🇷</span>
+        <a class="language" href="bkv-hr.webp">
+          <img class="flag" src="flag-hr.webp" alt="" width="48" height="40">
           <span class="language-name">Hrvatski</span>
           <span class="arrow">›</span>
         </a>
 
-        <a class="language" href="Italienisch.png">
-          <span class="flag">🇮🇹</span>
+        <a class="language" href="bkv-it.webp">
+          <img class="flag" src="flag-it.webp" alt="" width="48" height="40">
           <span class="language-name">Italiano</span>
           <span class="arrow">›</span>
         </a>
 
-        <a class="language" href="Russisch.png">
-          <span class="flag">🇷🇺</span>
+        <a class="language" href="bkv-ru.webp">
+          <img class="flag" src="flag-ru.webp" alt="" width="48" height="40">
           <span class="language-name">Русский</span>
           <span class="arrow">›</span>
         </a>
 
-        <a class="language" href="Rumänisch.png">
-          <span class="flag">🇷🇴</span>
+        <a class="language" href="bkv-ro.webp">
+          <img class="flag" src="flag-ro.webp" alt="" width="48" height="40">
           <span class="language-name">Română</span>
           <span class="arrow">›</span>
         </a>
@@ -287,6 +334,19 @@
       <div class="info">
         <strong>Hinweis:</strong>
         Tippe auf deine Sprache, um die Informationen zur betrieblichen Krankenversicherung zu öffnen.
+      </div>
+
+      <div class="downloads">
+        <strong>Zum Weiterleiten oder Ausdrucken (JPEG):</strong>
+        <div class="dl-list">
+          <a href="bkv-de.jpg" download>Deutsch</a>
+          <a href="bkv-en.jpg" download>English</a>
+          <a href="bkv-tr.jpg" download>Türkçe</a>
+          <a href="bkv-hr.jpg" download>Hrvatski</a>
+          <a href="bkv-it.jpg" download>Italiano</a>
+          <a href="bkv-ru.jpg" download>Русский</a>
+          <a href="bkv-ro.jpg" download>Română</a>
+        </div>
       </div>
 
       <div class="footer">
